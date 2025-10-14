@@ -1,0 +1,31 @@
+{
+  "name": "@thehighestbit/node-red-contrib-dht-libgpiod",
+  "publishConfig": {
+    "access": "public"
+  },
+  "version": "1.0.1",
+  "description": "A node red node for communicating with DHT sensors with/without the libgpiod library.",
+  "main": "dht.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Joosep Orasmäe",
+  "license": "ISC",
+  "node-red": {
+    "version": ">=2.0.0",
+    "nodes": {
+      "dht": "dht.js"
+    },
+    "dependencies": {
+      "node-dht-sensor": "^0.4.5"
+    }
+  },
+  "files": [
+    "scripts/install-binary.js",
+    "dht.js",
+    "dht.html"
+  ],
+  "dependencies": {
+    "node-dht-sensor": "^0.4.5"
+  }
+}

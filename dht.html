@@ -1,0 +1,69 @@
+<script type="text/javascript">
+RED.nodes.registerType('dht', {
+    category: 'input',
+    color: '#d6d6d6',
+    defaults: {
+        name: { value: '' },
+        sensor_version: { value: 22, required: true },
+        gpio_pin: { value: 4, required: true },
+        read_interval: {
+            value: 2000,
+            required: false,
+            validate: v => !isNaN(v) && Number(v) >= 1000
+        }
+    },
+    inputs: 1,
+    outputs: 1,
+    icon: 'bridge.svg',
+    label: function () {
+        return this.name || `DHT${this.sensor_version} GPIO${this.gpio_pin}`;
+    },
+    oneditprepare: function () {
+        const $sensor = $('#node-input-sensor_version');
+        $sensor.typedInput({
+            types: [{
+                value: 'sensor_version',
+                options: [
+                    { value: '11', label: 'DHT11' },
+                    { value: '22', label: 'DHT22' }
+                ]
+            }]
+        });
+        $sensor.typedInput('value', String(this.sensor_version || 22));
+    },
+    oneditsave: function () {
+        this.sensor_version = Number($('#node-input-sensor_version').typedInput('value'));
+    }
+});
+</script>
+
+<script type="text/html" data-template-name="dht">
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-sensor_version"><i class="fa fa-microchip"></i> Sensor</label>
+        <input type="text" id="node-input-sensor_version">
+    </div>
+    <div class="form-row">
+        <label for="node-input-gpio_pin"><i class="fa fa-plug"></i> GPIO</label>
+        <input type="number" id="node-input-gpio_pin" min="0" max="27">
+    </div>
+    <div class="form-row">
+        <label for="node-input-read_interval"><i class="fa fa-clock-o"></i> Interval (ms)</label>
+        <input type="number" id="node-input-read_interval" min="1000" step="100">
+    </div>
+</script>
+
+<script type="text/markdown" data-help-name="dht">
+Enables reading of DHT sensor data.
+
+### Outputs
+: payload (JSON) : Temperature and humidity readings.
+
+### Configuration
+- **Sensor Version**: DHT model (11 or 22).
+- **GPIO Pin**: BCM pin number for the data line.
+- **Read Interval**: Polling interval in milliseconds (>= 1000).
+</script>
