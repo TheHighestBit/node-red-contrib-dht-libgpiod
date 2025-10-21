@@ -9,6 +9,21 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "keywords": [
+    "node-red",
+    "iot",
+    "device",
+    "devices",
+    "raspberry",
+    "raspi",
+    "rpi",
+    "pi",
+    "temperature",
+    "humidity",
+    "sensor",
+    "dht11",
+    "dht22"
+  ],
   "author": "Joosep Orasmäe",
   "license": "ISC",
   "node-red": {
