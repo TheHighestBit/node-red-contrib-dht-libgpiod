@@ -35,11 +35,11 @@ module.exports = function (RED) {
                     return;
                 }
 
-                node.status({ fill: "green", shape: "dot", text: `${temperature.toFixed(1)}°C` });
+                node.status({ fill: "green", shape: "dot", text: `${temperature.toFixed(1)}°C, ${humidity.toFixed(1)}%` });
                 node.send({
                     payload: {
-                        temperature: temperature.toFixed(2),
-                        humidity: humidity.toFixed(2)
+                        temperature: temperature,
+                        humidity: humidity
                     },
                     topic: node.name || `dht/${node.gpio_pin}`
                 });
