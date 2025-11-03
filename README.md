@@ -15,4 +15,4 @@ npm install @thehighestbit/node-red-contrib-libgpiod
 
 * Sensor type - If the sensor is DHT11 or DHT22
 * GPIO - GPIO pin number to which the data out of the sensor is connected
-* Interval (ms) - Interval between sensor reads.
+* Interval (ms) - Optional interval between sensor reads.

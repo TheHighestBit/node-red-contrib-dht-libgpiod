@@ -52,7 +52,7 @@ RED.nodes.registerType('dht', {
     </div>
     <div class="form-row">
         <label for="node-input-read_interval"><i class="fa fa-clock-o"></i> Interval (ms)</label>
-        <input type="number" id="node-input-read_interval" min="1000" step="100">
+        <input type="number" id="node-input-read_interval" min="1000" step="100" placeholder="Not polling">
     </div>
 </script>
 
@@ -65,5 +65,5 @@ Enables reading of DHT sensor data. Requires `libgpiod` 1.6.x to be installed on
 ### Configuration
 - **Sensor Version**: DHT model (11 or 22).
 - **GPIO Pin**: BCM pin number for the data line.
-- **Read Interval**: Polling interval in milliseconds (>= 1000).
+- **Read Interval**: Polling interval in milliseconds (>= 1000), can be left blank.
 </script>
