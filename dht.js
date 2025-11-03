@@ -22,7 +22,7 @@ module.exports = function (RED) {
             timer = setTimeout(() => readSensor(), delayMs);
         }
 
-        function readSensor(attempt = 1) {
+        function readSensor(attempt = 1, msg = {}) {
             sensor.read(node.sensor_version, node.gpio_pin, (err, temperature, humidity) => {
                 if (err) {
                     if (attempt < MAX_ATTEMPTS) {
@@ -41,14 +41,14 @@ module.exports = function (RED) {
                         temperature: temperature,
                         humidity: humidity
                     },
-                    topic: node.name || `dht/${node.gpio_pin}`
+                    topic: msg.topic || node.name || `dht/${node.gpio_pin}`
                 });
 
                 scheduleNext(node.read_interval);
             });
         }
 
-        node.on("input", () => readSensor());
+        node.on("input", (msg) => readSensor(1, msg));
         node.on("close", () => {
             active = false;
             clearTimeout(timer);
