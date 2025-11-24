@@ -3,7 +3,7 @@
   "publishConfig": {
     "access": "public"
   },
-  "version": "1.0.1",
+  "version": "1.0.3",
   "description": "A node red node for communicating with DHT sensors with/without the libgpiod library.",
   "main": "dht.js",
   "scripts": {
@@ -24,7 +24,7 @@
     "dht11",
     "dht22"
   ],
-  "author": "Joosep Orasmäe",
+  "author": "TheHighestBit",
   "license": "ISC",
   "node-red": {
     "version": ">=2.0.0",
@@ -42,5 +42,9 @@
   ],
   "dependencies": {
     "node-dht-sensor": "^0.4.5"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/TheHighestBit/node-red-contrib-dht-libgpiod.git"
   }
 }
