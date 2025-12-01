@@ -36,7 +36,6 @@
     }
   },
   "files": [
-    "scripts/install-binary.js",
     "dht.js",
     "dht.html"
   ],
